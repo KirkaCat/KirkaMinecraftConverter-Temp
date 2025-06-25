@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.test = test;
-function test() {
-    window.alert("HELLO");
+function test(mapCode, options) {
+    alert("HELLO");
 }

@@ -1,5 +1,5 @@
 
 
-export function test(kirkaMap: string, options: Record<string, any>) {
+export function test(mapCode: string, options: Record<string, any>) {
     alert("HELLO");
 }
