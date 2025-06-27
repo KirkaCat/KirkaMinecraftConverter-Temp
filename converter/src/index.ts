@@ -2,13 +2,13 @@
 
 export function test(mapCode: string, options: Record<string, any>) {
 
-    fetch('data.txt')
-    .then(response => response.text())  // Convert response to text
-    .then(data => {
-        console.log(data);  // Handle the file contents here
-    })
-    .catch(error => {
-        console.error('Error fetching file:', error);
-    });
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'data.txt', true);
+    xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(xhr.responseText);  // Handle the file contents here
+    }
+    };
+    xhr.send();
 
 }
