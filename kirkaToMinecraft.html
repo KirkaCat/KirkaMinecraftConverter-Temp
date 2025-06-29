@@ -21,34 +21,34 @@
         </style>
 
         <!-- <script src="converter/build/ConvertMap.js"> -->
-        <script type="module" >
+        <script type="module">
 
-            import { greet } from './converter/build/htmlTest.js';
-            console.log(greet('Browser'));
+            import { ConvertMap } from './converter/build/ConvertMap.js';
+            console.log(ConvertMap);
 
-            // function convert() {
-            //     const convertTeam1Spawns = document.getElementById('convertTeam1Spawns').checked;
-            //     const convertTeam2Spawns = document.getElementById('convertTeam2Spawns').checked;
-            //     const convertRegions = document.getElementById('convertRegions').checked;
-            //     const convertCheckpoints = document.getElementById('convertCheckpoints').checked;
+            function convert() {
+                const convertTeam1Spawns = document.getElementById('convertTeam1Spawns').checked;
+                const convertTeam2Spawns = document.getElementById('convertTeam2Spawns').checked;
+                const convertRegions = document.getElementById('convertRegions').checked;
+                const convertCheckpoints = document.getElementById('convertCheckpoints').checked;
 
-            //     try {
+                try {
 
-            //         const convertedMapData = ConvertMap.toMinecraft(mapCode, {
-            //             convertTeam1Spawns: document.getElementById('convertTeam1Spawns').checked,
-            //             convertTeam2Spawns: document.getElementById('convertTeam2Spawns').checked,
-            //             convertRegions: document.getElementById('convertRegions').checked,
-            //             convertCheckpoints: document.getElementById('convertCheckpoints').checked
-            //         });
+                    const convertedMapData = ConvertMap.toMinecraft(mapCode, {
+                        convertTeam1Spawns: document.getElementById('convertTeam1Spawns').checked,
+                        convertTeam2Spawns: document.getElementById('convertTeam2Spawns').checked,
+                        convertRegions: document.getElementById('convertRegions').checked,
+                        convertCheckpoints: document.getElementById('convertCheckpoints').checked
+                    });
 
-            //         const blobData = new Blob([convertedMapData.buffer])
-            //         const blobUrl = URL.createObjectURL(blobData);
-            //         document.location.href = blobUrl;
+                    const blobData = new Blob([convertedMapData.buffer])
+                    const blobUrl = URL.createObjectURL(blobData);
+                    document.location.href = blobUrl;
 
-            //     } catch (ex) {
-            //         alert(`Error: ${ex.message}`)
-            //     }
-            // }
+                } catch (ex) {
+                    alert(`Error: ${ex.message}`)
+                }
+            }
 
             document.getElementById("convert").onclick = convert;
 
