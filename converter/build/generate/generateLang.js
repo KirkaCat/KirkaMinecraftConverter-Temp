@@ -12,7 +12,7 @@ export default (function () {
         const translations = BlockTranslation.get(minecraftId);
         if (translations === undefined)
             continue;
-        const kirkaIds = translations.values().map(translation => translation.kirka).toArray().sort(); // Get all Kirka IDs that translate from the Minecraft ID.
+        const kirkaIds = [...translations.values()].map(translation => translation.kirka).sort(); // Get all Kirka IDs that translate from the Minecraft ID.
         const idGroups = [];
         // Group sequential IDs to form a cleaner prefix like `10-14 & 38-40`
         let index = 0;

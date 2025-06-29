@@ -359,7 +359,7 @@ function _toMinecraft(mapData: KirkaMap<false>, options?: ConvertOptions) {
 
 }
 
-namespace ConvertMap {
+export namespace ConvertMap {
 
     export const toMinecraft = _toMinecraft;
 

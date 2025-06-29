@@ -1,5 +1,19 @@
 // FIXME: Probably needs to be rewritten, this whole thing is kinda ass idk
 export class BlockTranslation {
+    /**
+     * The Kirka block ID that this translation corresponds to.
+     */
+    kirka;
+    /**
+     * The primary Minecraft block translation for this Kirka block.
+     * Used to translate both to and from Kirka blocks.
+     */
+    minecraft;
+    /**
+     * Resolvable Minecraft block translations for this Kirka block.
+     * Only used to translate to Kirka blocks, not from.
+     */
+    resolvable;
     constructor(kirka, minecraft, resolvable) {
         this.kirka = kirka;
         this.minecraft = minecraft;
@@ -22,6 +36,8 @@ export class BlockTranslation {
     }
 }
 class MinecraftBlockTranslation {
+    id;
+    blockStates;
     constructor(id, blockStates) {
         this.id = id;
         this.blockStates = Object.keys(blockStates || {}).length === 0 ? undefined : blockStates;
@@ -386,10 +402,10 @@ for (const [strId, translation] of Object.entries(_BlockTranslationReference)) {
 (function (BlockTranslation) {
     let Ids;
     (function (Ids) {
-        Ids.kirka = _referenceMap.keys().toArray().filter(key => typeof (key) === 'number');
-        Ids.minecraft = _referenceMap.keys().toArray().filter(key => typeof (key) === 'string');
+        Ids.kirka = [..._referenceMap.keys()].filter(key => typeof (key) === 'number');
+        Ids.minecraft = [..._referenceMap.keys()].filter(key => typeof (key) === 'string');
     })(Ids = BlockTranslation.Ids || (BlockTranslation.Ids = {}));
-    BlockTranslation.translations = _referenceMap.entries().filter(translation => translation instanceof BlockTranslation);
+    BlockTranslation.translations = [..._referenceMap.entries()].filter(translation => translation instanceof BlockTranslation);
     function get(id) {
         return _referenceMap.get(id);
     }

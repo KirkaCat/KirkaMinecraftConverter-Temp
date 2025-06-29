@@ -293,7 +293,7 @@ function _toMinecraft(mapData, options) {
     // console.log(byteData.join(','));
     // console.log(`Width: ${mapWidth} | Length: ${mapLength} | Height: ${mapHeight}`);
 }
-var ConvertMap;
+export var ConvertMap;
 (function (ConvertMap) {
     ConvertMap.toMinecraft = _toMinecraft;
 })(ConvertMap || (ConvertMap = {}));

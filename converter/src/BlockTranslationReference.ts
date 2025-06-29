@@ -453,11 +453,11 @@ for (const [strId, translation] of Object.entries(_BlockTranslationReference)) {
 export namespace BlockTranslation {
 
     export namespace Ids {
-        export const kirka = _referenceMap.keys().toArray().filter(key => typeof(key) === 'number');
-        export const minecraft = _referenceMap.keys().toArray().filter(key => typeof(key) === 'string');
+        export const kirka = [..._referenceMap.keys()].filter(key => typeof(key) === 'number');
+        export const minecraft = [..._referenceMap.keys()].filter(key => typeof(key) === 'string');
     }
 
-    export const translations = _referenceMap.entries().filter(translation => translation instanceof BlockTranslation);
+    export const translations = [..._referenceMap.entries()].filter(translation => translation instanceof BlockTranslation);
 
     export function get<T extends KirkaBlock.Id | MinecraftBlock.Id>(id: T): (T extends KirkaBlock.Id ? BlockTranslation : Set<BlockTranslation>) | undefined {
         return _referenceMap.get(id) as any;
