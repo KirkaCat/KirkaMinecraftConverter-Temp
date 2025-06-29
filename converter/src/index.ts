@@ -2,13 +2,22 @@
 
 export function test(mapCode: string, options: Record<string, any>) {
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'data.txt', true);
-    xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(xhr.responseText);  // Handle the file contents here
+readTextFile('D:\\Jordan\\Kirka\\KirkaMinecraftConverter-Temp\\converter\\data.txt');
+  function readTextFile(file: any) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    { 
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            { 
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
     }
-    };
-    xhr.send();
+    rawFile.send(null);
 
+    }
 }

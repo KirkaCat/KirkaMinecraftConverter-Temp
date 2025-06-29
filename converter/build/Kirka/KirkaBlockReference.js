@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.KirkaBlock = exports.KirkaBlockReference = void 0;
-exports.KirkaBlockReference = {
+export const KirkaBlockReference = {
     0: {
         id: 0,
         uiCatagory: KirkaBlock.EUICatagory.AIR,
@@ -1020,7 +1017,7 @@ exports.KirkaBlockReference = {
         description: "Light block"
     },
 };
-var KirkaBlock;
+export var KirkaBlock;
 (function (KirkaBlock) {
     // -- -- --
     let EUICatagory;
@@ -1043,4 +1040,4 @@ var KirkaBlock;
         EFacingDirection["SOUTH"] = "south";
         EFacingDirection["WEST"] = "west";
     })(EFacingDirection = KirkaBlock.EFacingDirection || (KirkaBlock.EFacingDirection = {}));
-})(KirkaBlock || (exports.KirkaBlock = KirkaBlock = {}));
+})(KirkaBlock || (KirkaBlock = {}));

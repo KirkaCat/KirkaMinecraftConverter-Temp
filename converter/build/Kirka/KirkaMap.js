@@ -1,20 +1,18 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.KirkaMap = void 0;
 const DECORATOR_SUFFIX = '___DATA';
 const isMappedObject = (value) => typeof (value) === 'object' && !Array.isArray(value) && value !== null;
 const removeMappedDecoratorSuffix = (data) => {
-    const newObj = {};
-    for (const [key, value] of Object.entries(data)) {
-        const correctedKey = key.replace(DECORATOR_SUFFIX, '');
-        if (isMappedObject(value)) {
+    if (isMappedObject(data)) {
+        const newObj = {};
+        for (const [key, value] of Object.entries(data)) {
+            const correctedKey = key.replace(DECORATOR_SUFFIX, '');
             newObj[correctedKey] = removeMappedDecoratorSuffix(value);
         }
-        else {
-            newObj[correctedKey] = value;
-        }
+        return newObj;
     }
-    return newObj;
+    else if (Array.isArray(data)) {
+        return data.map(v => removeMappedDecoratorSuffix(v));
+    }
+    return data;
 };
 function _clone(obj) {
     if (typeof (obj) === 'object' && (obj instanceof Object)) {
@@ -35,7 +33,7 @@ function _clone(obj) {
     }
     return obj;
 }
-var KirkaMap;
+export var KirkaMap;
 (function (KirkaMap) {
     KirkaMap.CHUNK_SIZE = 16;
     KirkaMap.CHUNK_VOLUME = Math.pow(KirkaMap.CHUNK_SIZE, 3);
@@ -51,7 +49,7 @@ var KirkaMap;
             let data;
             if (typeof (mapConfig) === 'string') {
                 try {
-                    mapConfig = JSON.parse(mapConfig);
+                    data = JSON.parse(mapConfig);
                 }
                 catch {
                     throw new Error("Invalid map data - couldn't parse as valid JSON string.");
@@ -233,4 +231,4 @@ var KirkaMap;
             FromGlobalPosition.toLocal = toLocal;
         })(FromGlobalPosition = BlockUtils.FromGlobalPosition || (BlockUtils.FromGlobalPosition = {}));
     })(BlockUtils = KirkaMap.BlockUtils || (KirkaMap.BlockUtils = {}));
-})(KirkaMap || (exports.KirkaMap = KirkaMap = {}));
+})(KirkaMap || (KirkaMap = {}));

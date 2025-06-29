@@ -2,18 +2,21 @@
 
 const DECORATOR_SUFFIX = '___DATA';
 const isMappedObject = (value: any) => typeof(value) === 'object' && !Array.isArray(value) && value !== null;
-const removeMappedDecoratorSuffix = (data: Record<string, any>) => {
-    const newObj: Record<string, any> = {};
-    for (const [key, value] of Object.entries(data)) {
-        const correctedKey = key.replace(DECORATOR_SUFFIX, '');
-        if (isMappedObject(value)) {
+
+const removeMappedDecoratorSuffix = (data: any): any => {
+    if (isMappedObject(data)) {
+        const newObj: Record<string, any> = {};
+        for (const [key, value] of Object.entries(data) as [string, any]) {
+            const correctedKey = key.replace(DECORATOR_SUFFIX, '');
             newObj[correctedKey] = removeMappedDecoratorSuffix(value);
-        } else {
-            newObj[correctedKey] = value;
         }
+        return newObj;
+    } else if (Array.isArray(data)) {
+        return data.map(v => removeMappedDecoratorSuffix(v));
     }
-    return newObj;
+    return data;
 }
+
 
 type Decorated<T> = {
   [K in keyof T as `${string & K}${typeof DECORATOR_SUFFIX}`]: T[K] extends object ? Decorated<T[K]> : T[K];
@@ -39,7 +42,9 @@ function _clone<T extends any>(obj: T): T {
 
 
 type _KirkaMap = KirkaMap.Config.IRequired & Partial<KirkaMap.Config.IOptional> & Partial<KirkaMap.Config.IEnvironment>;
-export type KirkaMap = _KirkaMap | Decorated<_KirkaMap>;
+export type KirkaMap<isDecorated extends boolean = boolean> = isDecorated extends true
+    ? Decorated<_KirkaMap>
+    : (isDecorated extends false ? _KirkaMap : (_KirkaMap | Decorated<_KirkaMap>));
 
 export namespace KirkaMap {
 
@@ -129,13 +134,13 @@ export namespace KirkaMap {
         /** Settings that are required for the map config to be considered valid */
         export interface IRequired {
             mapName?: string;
-            chunk: Config.Chunks;
+            chunks: Config.Chunks;
             spawnPlaces: Config.SpawnPoints;
         }
 
         export interface IOptional {
-            flagPlaces___DATA: KirkaMap.Config.Region[];
-            yellowFlagPlaces___DATA: Config.Checkpoint[];
+            flagPlaces: KirkaMap.Config.Region[];
+            yellowFlagPlaces: Config.Checkpoint[];
         }
 
         export interface IEnvironment {
@@ -168,11 +173,11 @@ export namespace KirkaMap {
          * @param mapConfig The map config data.
          * @returns the cleaned map data.
          */
-        export function clean(mapConfig: any): _KirkaMap {
+        export function clean(mapConfig: any): KirkaMap<false> {
             let data: Record<string, any>;
             if (typeof(mapConfig) === 'string') {
                 try {
-                    mapConfig = JSON.parse(mapConfig);
+                    data = JSON.parse(mapConfig);
                 } catch {
                     throw new Error("Invalid map data - couldn't parse as valid JSON string.");
                 }
@@ -181,7 +186,7 @@ export namespace KirkaMap {
             }
             if (data! === undefined) throw new Error("Invalid map config data.");
 
-            return removeMappedDecoratorSuffix(data) as _KirkaMap;
+            return removeMappedDecoratorSuffix(data) as KirkaMap<false>;
         }
 
     }

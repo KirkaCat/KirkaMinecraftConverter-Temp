@@ -7,9 +7,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate-lang": "generate-lang.sh",
+    "generate-json-nbt": "generate-json-nbt.sh"
   },
   "dependencies": {
     "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.6"
   }
 }

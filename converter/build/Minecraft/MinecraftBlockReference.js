@@ -1,6 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MinecraftBlockReference = void 0;
 const _MinecraftBlockReference = {
     "minecraft:acacia_button": {
         "id": "minecraft:acacia_button",
@@ -6271,4 +6268,4 @@ const _MinecraftBlockReference = {
         }
     }
 };
-exports.MinecraftBlockReference = _MinecraftBlockReference;
+export const MinecraftBlockReference = _MinecraftBlockReference;

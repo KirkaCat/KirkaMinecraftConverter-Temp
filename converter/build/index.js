@@ -1,14 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.test = test;
-function test(mapCode, options) {
-    fetch('data.txt')
-        .then(response => response.text()) // Convert response to text
-        .then(data => {
-        console.log(data); // Handle the file contents here
-    })
-        .catch(error => {
-        console.error('Error fetching file:', error);
-    });
-    alert("HELLO");
+export function test(mapCode, options) {
+    readTextFile('D:\\Jordan\\Kirka\\KirkaMinecraftConverter-Temp\\converter\\data.txt');
+    function readTextFile(file) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, false);
+        rawFile.onreadystatechange = function () {
+            if (rawFile.readyState === 4) {
+                if (rawFile.status === 200 || rawFile.status == 0) {
+                    var allText = rawFile.responseText;
+                    alert(allText);
+                }
+            }
+        };
+        rawFile.send(null);
+    }
 }
