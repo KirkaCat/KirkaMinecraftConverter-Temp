@@ -9,7 +9,7 @@
     work for any purpose, without any conditions, unless such conditions are
     required by law.
 */
-export default nbt = (function () {
+export const nbt = (function () {
     'use strict';
     if (typeof ArrayBuffer === 'undefined') {
         throw new Error('Missing required type ArrayBuffer');
@@ -621,3 +621,4 @@ export default nbt = (function () {
         }
     };
 }).apply(typeof exports !== 'undefined' ? exports : (window.nbt = {}));
+export default nbt;

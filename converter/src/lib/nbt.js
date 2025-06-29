@@ -10,7 +10,7 @@
 	required by law.
 */
 
-export default nbt = (function() {
+export const nbt = (function() {
 	'use strict';
 
 	if (typeof ArrayBuffer === 'undefined') {
@@ -672,3 +672,5 @@ export default nbt = (function() {
 		}
 	};
 }).apply(typeof exports !== 'undefined' ? exports : (window.nbt = {}));
+
+export default nbt;
