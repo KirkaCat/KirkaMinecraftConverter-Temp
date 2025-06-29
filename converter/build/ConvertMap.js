@@ -1,7 +1,7 @@
 import { BlockTranslation } from "./BlockTranslationReference.js";
 import { KirkaMap } from "./Kirka/KirkaMap.js";
-import nbt from './lib/nbt.js';
-import pako from './lib/pako.js';
+import { nbt } from './lib/nbt.js';
+import { pako } from './lib/pako.js';
 import KirkaMarkerBlueSpawn from "./Minecraft/json-nbt/KirkaMarkerBlueSpawn.js";
 import KirkaMarkerRedSpawn from './Minecraft/json-nbt/KirkaMarkerRedSpawn.js';
 import KirkaMarkerRegionDebug from './Minecraft/json-nbt/KirkaMarkerRegionDebug.js';
