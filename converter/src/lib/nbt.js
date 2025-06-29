@@ -10,7 +10,7 @@
 	required by law.
 */
 
-(function() {
+export default nbt = (function() {
 	'use strict';
 
 	if (typeof ArrayBuffer === 'undefined') {

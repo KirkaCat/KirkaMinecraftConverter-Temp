@@ -1,4 +1,3 @@
-"use strict";
 /*
     NBT.js - a JavaScript parser for NBT archives
     by Sijmen Mulder
@@ -10,7 +9,7 @@
     work for any purpose, without any conditions, unless such conditions are
     required by law.
 */
-(function () {
+export default nbt = (function () {
     'use strict';
     if (typeof ArrayBuffer === 'undefined') {
         throw new Error('Missing required type ArrayBuffer');
