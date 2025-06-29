@@ -1,11 +1,11 @@
-import { BlockTranslation } from "./BlockTranslationReference";
-import { KirkaMap } from "./Kirka/KirkaMap";
-import nbt from './lib/nbt';
-import pako from './lib/pako';
-import KirkaMarkerBlueSpawn from "./Minecraft/json-nbt/KirkaMarkerBlueSpawn";
-import KirkaMarkerRedSpawn from './Minecraft/json-nbt/KirkaMarkerRedSpawn';
-import KirkaMarkerRegionDebug from './Minecraft/json-nbt/KirkaMarkerRegionDebug';
-import KirkaMarkerCheckpointDebug from './Minecraft/json-nbt/KirkaMarkerCheckpointDebug';
+import { BlockTranslation } from "./BlockTranslationReference.js";
+import { KirkaMap } from "./Kirka/KirkaMap.js";
+import nbt from './lib/nbt.js';
+import pako from './lib/pako.js';
+import KirkaMarkerBlueSpawn from "./Minecraft/json-nbt/KirkaMarkerBlueSpawn.js";
+import KirkaMarkerRedSpawn from './Minecraft/json-nbt/KirkaMarkerRedSpawn.js';
+import KirkaMarkerRegionDebug from './Minecraft/json-nbt/KirkaMarkerRegionDebug.js';
+import KirkaMarkerCheckpointDebug from './Minecraft/json-nbt/KirkaMarkerCheckpointDebug.js';
 const radiansToMinecraft = (radians) => {
     const degrees = radians * (180 / Math.PI);
     return (((-degrees - 180) + 180) % 360) - 180;
