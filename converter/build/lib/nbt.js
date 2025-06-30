@@ -9,7 +9,8 @@
     work for any purpose, without any conditions, unless such conditions are
     required by law.
 */
-export const nbt = (function () {
+let _nbt;
+(function () {
     'use strict';
     if (typeof ArrayBuffer === 'undefined') {
         throw new Error('Missing required type ArrayBuffer');
@@ -22,6 +23,7 @@ export const nbt = (function () {
     }
     /** @exports nbt */
     var nbt = this;
+    _nbt = nbt;
     var zlib = typeof require !== 'undefined' ? require('zlib') : window.zlib;
     /**
      * A mapping from type names to NBT type numbers.
@@ -621,4 +623,5 @@ export const nbt = (function () {
         }
     };
 }).apply(typeof exports !== 'undefined' ? exports : (window.nbt = {}));
+export const nbt = nbt;
 export default nbt;

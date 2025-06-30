@@ -10,7 +10,8 @@
 	required by law.
 */
 
-export const nbt = (function() {
+let _nbt;
+(function() {
 	'use strict';
 
 	if (typeof ArrayBuffer === 'undefined') {
@@ -26,6 +27,7 @@ export const nbt = (function() {
 	/** @exports nbt */
 
 	var nbt = this;
+    _nbt = nbt;
 	var zlib = typeof require !== 'undefined' ? require('zlib') : window.zlib;
 
 	/**
@@ -673,4 +675,5 @@ export const nbt = (function() {
 	};
 }).apply(typeof exports !== 'undefined' ? exports : (window.nbt = {}));
 
+export const nbt = nbt;
 export default nbt;
