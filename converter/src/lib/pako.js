@@ -1,5 +1,8 @@
 //@ts-nocheck
 
+
+let idkWWhatImDoing;
+
 /*! pako 2.1.0 https://github.com/nodeca/pako @license (MIT AND Zlib) */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -7,6 +10,8 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.pako = {}));
 })(this, (function (exports) { 'use strict';
 
+    idkWWhatImDoing = this;
+    
   // (C) 1995-2013 Jean-loup Gailly and Mark Adler
   // (C) 2014-2017 Vitaly Puzrin and Andrey Tupitsin
   //
@@ -6895,3 +6900,6 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
+
+export const pako = idkWWhatImDoing;
+export default pako;

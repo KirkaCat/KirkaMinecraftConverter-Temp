@@ -675,5 +675,5 @@ let _nbt;
 	};
 }).apply(typeof exports !== 'undefined' ? exports : (window.nbt = {}));
 
-export const nbt = nbt;
+export const nbt = _nbt;
 export default nbt;
