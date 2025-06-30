@@ -34,7 +34,7 @@
 
                 try {
 
-                    const convertedMapData = ConvertMap.toMinecraft(mapCode, {
+                    const convertedMapData = ConvertMap.toMinecraft(document.getElementById('mapCode').value, {
                         convertTeam1Spawns: document.getElementById('convertTeam1Spawns').checked,
                         convertTeam2Spawns: document.getElementById('convertTeam2Spawns').checked,
                         convertRegions: document.getElementById('convertRegions').checked,
